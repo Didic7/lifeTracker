@@ -11,24 +11,11 @@ angular.module('goalService', [])
         delete : function(id) {
             return $http.delete('/goals/' + id);
         },
-        addOk : function(id, date) {
-            if (!date) date = new Date();
-            var obj = {day: date};
-            return $http.put('/goals/' + id + '/ok', obj);
+        addOk : function(id) {
+            return $http.put('/goals/' + id + '/ok');
         },
-        addKo : function(id, date) {
-            if (!date) date = new Date();
-            var obj = {day: date};
-            return $http.put('/goals/' + id + '/ko', obj);
-        },
-        getDay : function(date) {
-          if (!date) date = new Date();
-          var month = (date.getMonth()+1);
-          if (month<10) {month="0" + month;}
-          var day = date.getDate();
-          if (day<10) {day="0" + day;}
-          var dateParameter = "" + date.getFullYear() + month + day;
-          return $http.get('/days/' + dateParameter);
+        addKo : function(id) {
+            return $http.put('/goals/' + id + '/ko');
         }
     }
 });
